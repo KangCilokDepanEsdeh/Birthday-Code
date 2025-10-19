@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>birthday Love</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            position: relative; /* Diperlukan untuk menumpuk pseudo-element */
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f7f4; /* Warna fallback jika gambar tidak muncul */
+            color: #333;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            /* Ganti URL gambar latar belakang di sini */
+            background-image: url("assets/images/bg.png");
+            background-size: cover;
+            background-position: center;
+            filter: blur(8px); /* Efek blur */
+            opacity: 0.3; /* Opasitas 30% */
+            z-index: -1; /* Letakkan di belakang konten */
+        }
+        h1, h2, h3 {
+            font-family: 'Lora', serif;
+        }
+        /* Animasi fade-in saat elemen masuk ke viewport */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Kueri Media untuk Penyesuaian Responsif (HP, Tablet, Laptop) */
+        @media (max-width: 767px) {
+            /* Penyesuaian untuk HP (Mobile) */
+            .hero-title-main, .hero-title-name {
+                font-size: 2.25rem; /* Ukuran font lebih kecil untuk judul di HP */
+                line-height: 2.5rem;
+            }
+            .hero-polaroid-container {
+                transform: rotate(3deg) scale(0.9); /* Sedikit kecilkan polaroid */
+            }
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <!-- Audio Player (disembunyikan) -->
+    <audio id="birthdaySong" loop>
+        <source src="assets/music/kuaminkan.mp3" type="audio/mpeg">
+        Browser Anda tidak mendukung elemen audio.
+    </audio>
+
+    <!-- Bagian Hero -->
+    <section id="hero" class="min-h-screen flex items-center justify-center py-12 px-6 sm:px-12 md:px-24 fade-in-section">
+        <div class="container mx-auto flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16">
+            <!-- Kiri: Ucapan -->
+            <div class="text-center md:text-left md:w-1/2">
+                <h1 class="text-3xl md:text-5xl font-bold text-slate-800 leading-tight hero-title-main">Selamat Ulang Tahun,</h1>
+                <h2 class="text-3xl md:text-5xl font-bold text-rose-500 mb-8 hero-title-name">Nabila Atika</h2>
+                <p class="text-slate-600 mb-8 max-w-md mx-auto md:mx-0 md:text-justify">
+                    Semoga hari-harimu selalu menyenangkan dengan kebahagiaan, tawa, dan kenangan indah yang tak terlupakan.
+                </p>
+                <p class="text-slate-600 mb-8 max-w-md mx-auto md:mx-0 md:text-justify">
+                    Sebelum di klik tombolnya, tolong siapkan tisu dan kameramu untuk mengabadikan momen spesial ini ya!
+                </p>
+                <button id="playButton" class="bg-rose-500 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-rose-600 transition-all duration-300 transform hover:scale-105">
+                    Coba klik di sini ya! ✨
+                </button>
+            </div>
+            <!-- Kanan: Foto Polaroid -->
+            <div class="md:w-1/2 flex justify-center">
+                <div class="bg-white p-4 pb-20 rounded-md shadow-2xl transform rotate-3 relative hero-polaroid-container">
+                    <img src="assets/images/foto-utama.jpeg" alt="Foto Ulang Tahun" class="w-64 h-64 md:w-80 md:h-80 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/320x320/e2e8f0/333?text=Foto+Kamu';">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bagian Cerita -->
+    <section id="stories" class="py-20 px-6 fade-in-section">
+        <div class="container mx-auto max-w-5xl">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-12 text-slate-800">Pergi untuk Pulang</h2>
+            <div class="space-y-16">
+                <!-- Cerita Item 1 -->
+                <div class="flex flex-col md:flex-row items-center gap-8">
+                    <div class="w-full md:w-1/3">
+                        <div class="bg-white p-3 pb-16 rounded-md shadow-lg transform rotate-2">
+                           <img src="assets/images/fotoke1.jpg" alt="Cerita 1" class="w-full h-auto object-cover">
+                        </div>
+                    </div>
+                    <div class="md:w-2/3">
+                        <h3 class="text-2xl font-bold text-slate-700 mb-2">Awal Pertemuan - Akhir 2021</h3>
+                        <p class="text-slate-600">Bertemu di Rumah kecil yang bernama "Bidarian Choirs".</p>
+                    </div>
+                </div>
+                 <!-- Cerita Item 2 -->
+                <div class="flex flex-col md:flex-row-reverse items-center gap-8">
+                    <div class="w-full md:w-1/3">
+                         <div class="bg-white p-3 pb-16 rounded-md shadow-lg transform -rotate-2">
+                            <img src="assets/images/foto2.jpg" alt="Cerita 2" class="w-full h-auto object-cover">
+                        </div>
+                    </div>
+                    <div class="md:w-2/3 md:text-right">
+                        <h3 class="text-2xl font-bold text-slate-700 mb-2">Petualangan Pertama - Akhir 2022</h3>
+                        <p class="text-slate-600">Kemarin kita mencoba mengaturnya sendiri, tapi tuhan memiliki rencana yang berbeda. Bertemu dan Ngobrol di Inovasi Expo 2022</p>
+                    </div>
+                </div>
+                <!-- Cerita Item 3 -->
+                <div class="flex flex-col md:flex-row items-center gap-8">
+                    <div class="w-full md:w-1/3">
+                        <div class="bg-white p-3 pb-16 rounded-md shadow-lg transform rotate-1">
+                            <img src="assets/images/foto3.jpg" alt="Cerita 3" class="w-full h-auto object-cover">
+                        </div>
+                    </div>
+                    <div class="md:w-2/3"><h3 class="text-2xl font-bold text-slate-700 mb-2">Belum Waktunya - Awal 2023</h3><p class="text-slate-600">Perayaan Patah Hati, Masih belum siap dengan keadaan masing-masing</p></div>
+                </div>
+                 <!-- Cerita Item 4 -->
+                <div class="flex flex-col md:flex-row-reverse items-center gap-8">
+                     <div class="w-full md:w-1/3">
+                         <div class="bg-white p-3 pb-16 rounded-md shadow-lg transform -rotate-3">
+                            <img src="assets/images/foto4.jpg" alt="Cerita 4" class="w-full h-auto object-cover">
+                        </div>
+                    </div>
+                    <div class="md:w-2/3 md:text-right"><h3 class="text-2xl font-bold text-slate-700 mb-2">Pergi untuk Pulang - Agustus s.d September 2023</h3><p class="text-slate-600">Sejauh apapun kita pergi, kita akan tau dimakan tempat pulang</p></div>
+                </div>
+                <!-- Cerita Item 5 -->
+                <div class="flex flex-col md:flex-row items-center gap-8">
+                    <div class="w-full md:w-1/3">
+                        <div class="bg-white p-3 pb-16 rounded-md shadow-lg transform rotate-2">
+                           <img src="assets/images/foto5.jpeg" alt="Cerita 5" class="w-full h-auto object-cover">
+                        </div>
+                    </div>
+                    <div class="md:w-2/3"><h3 class="text-2xl font-bold text-slate-700 mb-2">Saling Melihat Bertumbuh - Akhir 2023</h3><p class="text-slate-600">Hidup memang terlalu singkat untuk tidak berjuang bersama</p></div>
+                </div>
+                <!-- Cerita Item 6 -->
+                <div class="flex flex-col md:flex-row-reverse items-center gap-8">
+                     <div class="w-full md:w-1/3">
+                         <div class="bg-white p-3 pb-16 rounded-md shadow-lg transform -rotate-1">
+                            <img src="assets/images/fotoke6.jpg" alt="Cerita 6" class="w-full h-auto object-cover">
+                        </div>
+                    </div>
+                    <div class="md:w-2/3 md:text-right"><h3 class="text-2xl font-bold text-slate-700 mb-2">Saling Melihat Bertumbuh 2 - Akhir 2024</h3><p class="text-slate-600">Bukan tentang seberapa kuat kamu menahan rasa sakit, tetapi jauh kamu melewatinya</p></div>
+                </div>
+                <!-- Cerita Item 7 -->
+                <div class="flex flex-col md:flex-row items-center gap-8">
+                    <div class="w-full md:w-1/3">
+                        <div class="bg-white p-3 pb-16 rounded-md shadow-lg transform rotate-3">
+                            <img src="assets/images/foto7.jpeg" alt="Cerita 7" class="w-full h-auto object-cover">
+                        </div>
+                    </div>
+                    <div class="md:w-2/3"><h3 class="text-2xl font-bold text-slate-700 mb-2">Perjalanan Baru - Awal 2025</h3><p class="text-slate-600">Memulai babak baru dalam hidup, mencoba untuk mengambil resiko, entah itu baik atau buruk</p></div>
+                </div>
+                <!-- Cerita Item 8 -->
+                <div class="flex flex-col md:flex-row-reverse items-center gap-8">
+                    <div class="w-full md:w-1/3">
+                         <div class="bg-white p-3 pb-16 rounded-md shadow-lg transform -rotate-2">
+                            <img src="assets/images/foto8.jpeg" alt="Cerita 8" class="w-full h-auto object-cover">
+                        </div>
+                    </div>
+                    <div class="md:w-2/3 md:text-right"><h3 class="text-2xl font-bold text-slate-700 mb-2">Pembuktian - 2025 s.d 2027</h3><p class="text-slate-600">Pembuktian bahwa jarak bukan penghalang untuk saling mendukung dan tumbuh</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bagian Galeri -->
+    <section id="gallery" class="py-20 px-6 bg-rose-50 fade-in-section">
+        <div class="container mx-auto">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-12 text-slate-800">Galeri Kenangan</h2>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+                <!-- 10 Foto Galeri Polaroid -->
+                <div class="bg-white p-2 pb-10 rounded-sm shadow-lg transform transition-all duration-300 hover:scale-105 hover:-rotate-3 cursor-pointer">
+                    <img src="assets/images/1.jpeg" alt="Galeri 1" class="object-cover w-full h-40">
+                </div>
+                <div class="bg-white p-2 pb-10 rounded-sm shadow-lg transform transition-all duration-300 hover:scale-105 hover:rotate-3 cursor-pointer">
+                    <img src="assets/images/2.jpeg" alt="Galeri 2" class="object-cover w-full h-40">
+                </div>
+                <div class="bg-white p-2 pb-10 rounded-sm shadow-lg transform transition-all duration-300 hover:scale-105 hover:-rotate-2 cursor-pointer">
+                    <img src="assets/images/3.jpeg" alt="Galeri 3" class="object-cover w-full h-40">
+                </div>
+                <div class="bg-white p-2 pb-10 rounded-sm shadow-lg transform transition-all duration-300 hover:scale-105 hover:rotate-2 cursor-pointer">
+                    <img src="assets/images/4.jpeg" alt="Galeri 4" class="object-cover w-full h-40">
+                </div>
+                <div class="bg-white p-2 pb-10 rounded-sm shadow-lg transform transition-all duration-300 hover:scale-105 hover:-rotate-1 cursor-pointer">
+                    <img src="assets/images/5.jpeg" alt="Galeri 5" class="object-cover w-full h-40">
+                </div>
+                <div class="bg-white p-2 pb-10 rounded-sm shadow-lg transform transition-all duration-300 hover:scale-105 hover:rotate-1 cursor-pointer">
+                    <img src="assets/images/6.jpeg" alt="Galeri 6" class="object-cover w-full h-40">
+                </div>
+                <div class="bg-white p-2 pb-10 rounded-sm shadow-lg transform transition-all duration-300 hover:scale-105 hover:-rotate-3 cursor-pointer">
+                    <img src="assets/images/7.jpeg" alt="Galeri 7" class="object-cover w-full h-40">
+                </div>
+                <div class="bg-white p-2 pb-10 rounded-sm shadow-lg transform transition-all duration-300 hover:scale-105 hover:rotate-3 cursor-pointer">
+                    <img src="assets/images/8.jpeg" alt="Galeri 8" class="object-cover w-full h-40">
+                </div>
+                <div class="bg-white p-2 pb-10 rounded-sm shadow-lg transform transition-all duration-300 hover:scale-105 hover:-rotate-2 cursor-pointer">
+                    <img src="assets/images/9.jpeg" alt="Galeri 9" class="object-cover w-full h-40">
+                </div>
+                <div class="bg-white p-2 pb-10 rounded-sm shadow-lg transform transition-all duration-300 hover:scale-105 hover:rotate-2 cursor-pointer">
+                    <img src="assets/images/10s.jpg" alt="Galeri 10" class="object-cover w-full h-40">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bagian Ucapan -->
+    <section id="wishes" class="py-20 px-6 fade-in-section">
+        <div class="container mx-auto max-w-6xl">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-12 text-slate-800">Selamat Ulang Tahun Kesayangan Kakak</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Ucapan 1 -->
+                <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-rose-400">
+                    <p class="text-slate-600 italic mb-4">"Semoga panjang umur, sehat selalu, dan semua impianmu tercapai. Doa yang terbaik untukmu Sayang"</p>
+                    <p class="font-bold text-slate-800 text-right">- Orang terganteng sedunia</p>
+                </div>
+                <!-- Ucapan 2 -->
+                <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-purple-400">
+                    <p class="text-slate-600 italic mb-4">"Terima kasih untuk semua senyum dan tawamu. Semoga tahun ini dan tahun seterusnya membawa lebih banyak kebahagiaan untukmu."</p>
+                    <p class="font-bold text-slate-800 text-right">- Fauzan Azhiman H.Hoib</p>
+                </div>
+                 <!-- Ucapan 3 -->
+                <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-amber-400">
+                    <p class="text-slate-600 italic mb-4">"Barakallah fii umrikii Kesayangan Kakak. Semoga Allah SWT selalu menjaga, melimpahkan rahmat dan berkah-Nya kepadamu"</p>
+                    <p class="font-bold text-slate-800 text-right">- Calon Suamimu</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bagian Penutup -->
+    <footer id="next" class="py-20 px-6 text-center bg-slate-800 text-white fade-in-section">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold mb-4">Eittsss... Tunggu Dulu!</h2>
+            <p class="text-slate-300 mb-8">Masih ada satu lagiyang harus kamu lihat, tapi selesaikan dulu lagunya ya!</p>
+            <a href="https://link-kejutan-anda.com" target="_blank" class="bg-rose-500 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-rose-600 transition-all duration-300 transform hover:scale-105 inline-block">
+                Coba cek disini! ✨
+            </a>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const playButton = document.getElementById('playButton');
+            const birthdaySong = document.getElementById('birthdaySong');
+            
+            let animationFrameId = null;
+            let isAutoScrolling = false;
+
+            const cancelAutoScroll = () => {
+                if (!isAutoScrolling) return;
+                isAutoScrolling = false;
+                if (animationFrameId) {
+                    cancelAnimationFrame(animationFrameId);
+                    animationFrameId = null;
+                }
+                window.removeEventListener('wheel', cancelAutoScroll);
+                window.removeEventListener('touchmove', cancelAutoScroll);
+            };
+
+            playButton.addEventListener('click', () => {
+                playButton.style.display = 'none';
+                isAutoScrolling = true;
+
+                const playPromise = birthdaySong.play();
+                if (playPromise !== undefined) {
+                    playPromise.catch(error => {
+                        console.error("Gagal memutar audio:", error);
+                    });
+                }
+
+                window.addEventListener('wheel', cancelAutoScroll, { passive: true });
+                window.addEventListener('touchmove', cancelAutoScroll, { passive: true });
+
+                const totalHeight = document.body.scrollHeight - window.innerHeight;
+                const scrollDuration = 180000; // Durasi scroll 3 menit (sangat lambat)
+                let startTime = null;
+
+                function animateScroll(currentTime) {
+                    if (!isAutoScrolling) return;
+                    if (!startTime) startTime = currentTime;
+                    const elapsedTime = currentTime - startTime;
+                    const progress = Math.min(elapsedTime / scrollDuration, 1);
+                    
+                    window.scrollTo(0, totalHeight * progress);
+
+                    if (elapsedTime < scrollDuration) {
+                        animationFrameId = requestAnimationFrame(animateScroll);
+                    } else {
+                        isAutoScrolling = false;
+                    }
+                }
+
+                animationFrameId = requestAnimationFrame(animateScroll);
+            });
+
+            // Logika untuk animasi fade-in
+            const fadeInSections = document.querySelectorAll('.fade-in-section');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            fadeInSections.forEach(section => observer.observe(section));
+            
+            const heroSection = document.getElementById('hero');
+            if(heroSection) {
+                 setTimeout(() => heroSection.classList.add('is-visible'), 100);
+            }
+        });
+    </script>
+</body>
+</html>
+
